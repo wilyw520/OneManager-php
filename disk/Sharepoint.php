@@ -5,7 +5,7 @@ class Sharepoint extends Onedrive {
 
     function __construct($tag) {
         $this->disktag = $tag;
-        $this->redirect_uri = 'https://scfonedrive.github.io';
+        $this->redirect_uri = 'https://redirectonedrive.github.io';
         if (getConfig('client_id', $tag) && getConfig('client_secret', $tag)) {
             $this->client_id = getConfig('client_id', $tag);
             $this->client_secret = getConfig('client_secret', $tag);
