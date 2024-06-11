@@ -2614,7 +2614,7 @@ function render_list($path = '', $files = []) {
                 }
                 //$html .= json_encode($files['folder']);
                 if ($pagenum != $maxpage) {
-                    getStackHtml($html, "NextPageStart", 0);
+                    getStackHtml($html, "NextPage", 0);
                     replaceHtml($html, "constStr@NextPage", getconstStr('NextPage'));
                     replaceHtml($html, "NextPageNum", $pagenum + 1);
                 } else {
@@ -2634,8 +2634,8 @@ function render_list($path = '', $files = []) {
                     if ($page == $pagenum) {
                         $MorePageListStr = $MorePageListNow;
                     } else {
-                        $MorePageListStr = str_replace('<!--PageNum-->', $page, $MorePageList);
-                        $MorePageListStr = str_replace('<!--PageNum-->', $page, $MorePageListStr);
+                        $MorePageListStr = $MorePageList;
+                        replaceHtml($MorePageListStr, "PageNum", $page);
                     }
                     $html .= $MorePageListStr;
                 }
