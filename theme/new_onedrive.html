@@ -1963,6 +1963,125 @@
             }, sec * 1000);
         }
     </script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>底部菜单</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%; /* 让页面占据整个视窗高度 */
+  }
+  /* 底部菜单的样式 */
+  .bottom-menu {
+    position: fixed; /* 固定在页面底部 */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #d65cc6;
+    display: flex; /* 使用弹性盒子模型来水平排列菜单项 */
+    justify-content: space-around; /* 平均分布菜单项 */
+    padding: 1.5px 0; /* 上下留出一些空间 */
+    z-index: 9999; /* 设置较高的层级，确保菜单位于其他元素之上 */
+    transition: transform 0.3s; /* 添加过渡效果 */
+  }
+  .bottom-menu.hidden {
+    transform: translateY(100%); /* 移出视图 */
+  }
+  .bottom-menu-item {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    flex-grow: 1; /* 每个菜单项都可以自动填充剩余空间 */
+    padding: 10px; /* 内边距 */
+    box-sizing: border-box; /* 让内边距不影响元素的实际宽度 */
+    display: flex; /* 使用弹性盒子模型 */
+    flex-direction: column; /* 竖直方向排列子元素 */
+    align-items: center; /* 水平居中子元素 */
+  }
+  .bottom-menu-item:hover {
+    background-color: #e147cc; /* 鼠标悬停时的背景颜色 */
+    cursor: pointer; /* 鼠标悬停时显示手型光标 */
+  }
+  .bottom-menu-item i {
+    margin-bottom: 3px; /* 图标与文字之间的间距 */
+  }
+  .submenu {
+    display: none; /* 默认隐藏二级菜单 */
+    position: fixed; /* 固定在页面底部 */
+    bottom: 15px; /* 离页面底部一定距离 */
+    left: 0;
+    width: 100%;
+    background-color: #4dc0dc;
+    padding: 10px 0; /* 上下留出一些空间 */
+    overflow-y: auto; /* 当内容超出可视区域时自动添加垂直滚动条 */
+    max-height: calc(100vh - 110px); /* 计算剩余可视高度，避免被遮挡 */
+    z-index: 9998; /* 设置较低的层级，确保二级菜单位于主菜单上方 */
+  }
+  .submenu a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    padding: 5px 0;
+  }
+  /* 只在移动端显示底部菜单 */
+  @media (min-width: 768px) {
+    .bottom-menu {
+      display: none;
+    }
+  }
+</style>
+</head>
+<body>
+ 
+<div class="bottom-menu" id="bottomMenu">
+  <a href="https://i.wilyw.top/" class="bottom-menu-item"><i class="fas fa-home fa-lg"></i> 首页导航</a> <!-- 主菜单项：Home -->
+	<a href="https://web.wilyw.top/" class="bottom-menu-item"><i class="fas fa-bullhorn fa-lg"></i> 通知公告</a> <!-- 主菜单项：Home -->
+	<a href="/account.html" class="bottom-menu-item"><i class="fas fa-user fa-lg"></i> 个人中心</a> <!-- 主菜单项：Home -->
+</div>
+ 
+
+ 
+<script>
+  function toggleSubMenu(subMenuId) {
+    var subMenu = document.getElementById(subMenuId);
+    if (subMenu.style.display === "none" || !subMenu.style.display) {
+      subMenu.style.display = "block";
+    } else {
+      subMenu.style.display = "none";
+    }
+  }
+ 
+  var menuItems = document.querySelectorAll('.bottom-menu-item');
+  menuItems.forEach(function(item) {
+    item.addEventListener('touchstart', function() {
+      var submenuId = this.getAttribute('data-submenu');
+      if (submenuId) {
+        toggleSubMenu(submenuId);
+      }
+    });
+  });
+
+  window.addEventListener('scroll', function() {
+    var bottomMenu = document.getElementById('bottomMenu');
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      bottomMenu.classList.add('hidden');
+    } else {
+      bottomMenu.classList.remove('hidden');
+    }
+  });
+</script>
+ 
+</body>
+</html>
+
 </body>
 
 </html>
