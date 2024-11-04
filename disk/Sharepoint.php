@@ -10,8 +10,8 @@ class Sharepoint extends Onedrive {
             $this->client_id = getConfig('client_id', $tag);
             $this->client_secret = getConfig('client_secret', $tag);
         } else {
-            $this->client_id = '734ef928-d74c-4555-8d1b-d942fa0a1a41';
-            $this->client_secret = '_I5gOpmG5vTC2Ts_K._wCW4nN1km~4Pk52';
+            $this->client_id = 'bfc6e279-5c10-4ed7-bf69-ba664864405c';
+            $this->client_secret = '1hz8Q~cQIhNlcxl67eSJqBvg-lTGPUCglWo2EayO';
         }
         $this->oauth_url = 'https://login.microsoftonline.com/common/oauth2/v2.0/';
         $this->api_url = 'https://graph.microsoft.com/v1.0';
