@@ -628,7 +628,7 @@ function proxy_replace_domain($url, $domainforproxy) {
     if (strpos($url, '?') > 0) $sp = '&';
     else $sp = '?';
     $aim .= '/' . $uri . $sp . "basedrive=" . $drive->show_base_class();
-    $aim .= '&Origindomain=' . $domain;
+    $aim .= '&region=asia-data-center';
     return $aim;
 }
 
